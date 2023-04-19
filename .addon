@@ -1,0 +1,29 @@
+{
+  "Title": "Inventory System",
+  "Type": "library",
+  "Org": "conna",
+  "Ident": "inventory_system",
+  "Tags": null,
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": null,
+  "HasCode": true,
+  "CodePath": "code",
+  "PackageReferences": [],
+  "EditorReferences": null,
+  "Metadata": {
+    "ProjectTemplate": null,
+    "CsProjName": "",
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;",
+      "References": []
+    },
+    "Summary": "\uD83D\uDCE6 A slot based inventory system API that uses game resources for item definitions",
+    "Description": "",
+    "Public": true,
+    "ReplaceTags": "inventory"
+  }
+}
