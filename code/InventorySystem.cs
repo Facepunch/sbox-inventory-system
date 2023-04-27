@@ -76,6 +76,7 @@ public static partial class InventorySystem
 	{
 		NextContainerId = reader.ReadUInt64();
 		NextItemId = reader.ReadUInt64();
+		ReassignIds();
 	}
 
 	public static ulong GenerateContainerId()
@@ -97,26 +98,33 @@ public static partial class InventorySystem
 
 	public static void ReassignIds()
 	{
-		var containers = Containers.Values.ToList();
-		var items = Items.Values.ToList();
+		var items = Items.Values
+			.Where( i => i.Parent.IsValid() && i.Parent.Entity.IsValid() )
+			.Where( i => i.Parent.Entity.IsFromMap )
+			.ToList();
 
 		foreach ( var item in items )
 		{
-			if ( !item.Parent.IsValid() ) continue;
-			if ( !item.Parent.Entity.IsValid() ) continue;
-			if ( !item.Parent.Entity.IsFromMap ) continue;
-
 			Items.Remove( item.ItemId );
+		}
+
+		foreach ( var item in items )
+		{
 			item.SetItemId( GenerateItemId() );
 			Items.Add( item.ItemId, item );
 		}
 
+		var containers = Containers.Values
+			.Where( c => c.Entity.IsValid() && c.Entity.IsFromMap )
+			.ToList();
+
 		foreach ( var container in containers )
 		{
-			if ( !container.Entity.IsValid() ) continue;
-			if ( !container.Entity.IsFromMap ) continue;
-
 			Containers.Remove( container.ContainerId );
+		}
+
+		foreach ( var container in containers )
+		{
 			container.SetContainerId( GenerateContainerId() );
 			Containers.Add( container.ContainerId, container );
 		}

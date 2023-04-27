@@ -132,9 +132,6 @@ public class InventoryContainer : IValid
 		}
 		else if ( slotLimit < ItemList.Count )
 		{
-			if ( Game.IsClient )
-				Log.Info( "RUNNING SLOT LIMIT LOGIC ON CLIENT " );
-
 			var difference = ItemList.Count - slotLimit;
 
 			for ( var i = 0; i < difference; i++ )
