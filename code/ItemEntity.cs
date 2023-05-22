@@ -2,6 +2,9 @@
 
 namespace Conna.Inventory;
 
+/// <summary>
+/// The base item entity. It can be extended and the <see cref="ItemEntityAttribute"/> attribute could be added to the extended class.
+/// </summary>
 public partial class ItemEntity : ModelEntity
 {
 	public TimeUntil TimeUntilCanPickup { get; set; }

@@ -3,10 +3,19 @@ using System.Collections.Generic;
 
 namespace Conna.Inventory;
 
+/// <summary>
+/// This component should be added to an <see cref="IClient"/>. This allows inventories be networked to them.
+/// </summary>
 public partial class InventoryViewer : EntityComponent, IValid
 {
+	/// <summary>
+	/// Whether or not the inventory viewer is valid.
+	/// </summary>
 	public bool IsValid => Entity.IsValid();
 
+	/// <summary>
+	/// All container ids that this inventory viewer can see.
+	/// </summary>
 	[Net] public IList<ulong> ContainerIds { get; private set; } = new List<ulong>();
 
 	/// <summary>

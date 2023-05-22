@@ -2,6 +2,9 @@
 
 namespace Conna.Inventory;
 
+/// <summary>
+/// A networked inventory item. This makes it easy to network using <see cref="NetAttribute"/>.
+/// </summary>
 public class NetInventoryItem : BaseNetworkable, INetworkSerializer, IValid
 {
 	public InventoryItem Value { get; private set; }

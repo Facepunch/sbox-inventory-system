@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Conna.Inventory;
 
+/// <summary>
+/// An inventory container that can hold multiple <see cref="InventoryItem"/> instances.
+/// </summary>
 public class InventoryContainer : IValid
 {
 	public delegate void ItemTakenCallback( ushort slot, InventoryItem instance );

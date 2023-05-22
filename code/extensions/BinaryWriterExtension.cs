@@ -6,6 +6,11 @@ namespace Conna.Inventory;
 
 public static partial class BinaryWriterExtension
 {
+	/// <summary>
+	/// Write an <see cref="InventoryItem"/> into a writer.
+	/// </summary>
+	/// <param name="self"></param>
+	/// <param name="item"></param>
 	public static void Write( this BinaryWriter self, InventoryItem item )
 	{
 		if ( item != null )
@@ -39,6 +44,11 @@ public static partial class BinaryWriterExtension
 		}
 	}
 
+	/// <summary>
+	/// Write an <see cref="InventoryContainer"/> into a writer.
+	/// </summary>
+	/// <param name="self"></param>
+	/// <param name="container"></param>
 	public static void Write( this BinaryWriter self, InventoryContainer container )
 	{
 		var typeDesc = TypeLibrary.GetType( container.GetType() );
