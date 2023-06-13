@@ -9,7 +9,7 @@ namespace Conna.Inventory;
 /// <summary>
 /// An inventory item instance.
 /// </summary>
-public class InventoryItem : IValid
+public class InventoryItem : IInventoryItem
 {
 	/// <summary>
 	/// The <see cref="InventoryContainer"/> that holds this item.
@@ -110,7 +110,7 @@ public class InventoryItem : IValid
 	/// </summary>
 	/// <param name="data"></param>
 	/// <returns></returns>
-	public static InventoryItem Deserialize( byte[] data )
+	public static IInventoryItem Deserialize( byte[] data )
 	{
 		using ( var stream = new MemoryStream( data ) )
 		{
@@ -253,7 +253,7 @@ public class InventoryItem : IValid
 	/// Replace this item in its parent <see cref="InventoryContainer"/> with another item.
 	/// </summary>
 	/// <param name="other"></param>
-	public void Replace( InventoryItem other )
+	public void Replace( IInventoryItem other )
 	{
 		if ( Parent.IsValid() )
 		{
@@ -261,7 +261,7 @@ public class InventoryItem : IValid
 		}
 	}
 
-	public virtual bool OnTrySwap( InventoryItem other )
+	public virtual bool OnTrySwap( IInventoryItem other )
 	{
 		return true;
 	}
@@ -271,7 +271,7 @@ public class InventoryItem : IValid
 	/// </summary>
 	/// <param name="other"></param>
 	/// <returns></returns>
-	public virtual bool IsSameType( InventoryItem other )
+	public virtual bool IsSameType( IInventoryItem other )
 	{
 		return (GetType() == other.GetType() && UniqueId == other.UniqueId);
 	}
@@ -281,7 +281,7 @@ public class InventoryItem : IValid
 	/// </summary>
 	/// <param name="other"></param>
 	/// <returns></returns>
-	public virtual bool CanStackWith( InventoryItem other )
+	public virtual bool CanStackWith( IInventoryItem other )
 	{
 		return true;
 	}
