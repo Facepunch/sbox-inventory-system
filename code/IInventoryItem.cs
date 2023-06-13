@@ -47,6 +47,16 @@ public interface IInventoryItem : IValid
 	public string UniqueId { get; }
 
 	/// <summary>
+	/// The description of this item.
+	/// </summary>
+	public string Description { get; }
+
+	/// <summary>
+	/// The name of this item.
+	/// </summary>
+	public string Name { get; }
+
+	/// <summary>
 	/// Tags associated with the item.
 	/// </summary>
 	public IReadOnlySet<string> Tags { get; }
